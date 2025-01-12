@@ -74,4 +74,6 @@ crashlytics-build.properties
 
 /[Aa]ssets/[Pp]ose[Ff]ree_[Nn]ot[Ii]n[Rr]epository
 /[Aa]ssets/[Pp]ose[Ff]ree_[Nn]ot[Ii]n[Rr]epository.meta
+/.vscode
+/[Aa]ssets/[Aa]sset[Bb]undles
 
