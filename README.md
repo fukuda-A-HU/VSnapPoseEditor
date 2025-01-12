@@ -1,1 +1,1 @@
-# VSnapPoseObjectEditor
+# VSnapPoseEditor
