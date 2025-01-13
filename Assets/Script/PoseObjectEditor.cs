@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public partial class PoseObjectEditor : EditorWindow 
 {
+    private AssetBundle assetBundle;
     [MenuItem("VSnap/PoseObjectEditor")]
     private static void ShowWindow() {
         var window = GetWindow<PoseObjectEditor>("UIElements");
@@ -129,7 +130,8 @@ public partial class PoseObjectEditor : EditorWindow
         if (BuildPipeline.IsBuildTargetSupported(BuildTargetGroup.Android, BuildTarget.Android))
         {
             var androidPath = assetBundleDirectory + "/Android";
-            Object[] allAssets = LoadAllAssetsFromPath(androidPath + "/poseobject");
+            Object[] allAssets= LoadAllAssetsFromPath(androidPath + "/poseobject");
+
             foreach (Object asset in allAssets)
             {
                 if (asset.GetType() == typeof(PoseObject))
@@ -159,7 +161,13 @@ public partial class PoseObjectEditor : EditorWindow
 
     private Object[] LoadAllAssetsFromPath(string path)
     {
-        AssetBundle assetBundle = AssetBundle.LoadFromFile(path);
+        if (assetBundle != null)
+        {
+            assetBundle.Unload(true);
+        }
+
+        assetBundle = AssetBundle.LoadFromFile(path);
+
         if (assetBundle == null)
         {
             Debug.Log("AssetBundle is null");
